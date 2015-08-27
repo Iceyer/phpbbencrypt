@@ -218,6 +218,6 @@ int encrypt(char *hash_output, char* password) {
     return phpbb_hash(hash_output, password, ITOA64);
 }
 
-int verfiy(char *echopw, char * hash) {
+int verify(char *echopw, char * hash) {
     return phpbb_check_hash(echopw, hash);
 }

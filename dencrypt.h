@@ -1,2 +1,2 @@
 int encrypt(char *hash_output, char* password);
-int verfiy(char *echopw, char * hash);
+int verify(char *echopw, char * hash);
