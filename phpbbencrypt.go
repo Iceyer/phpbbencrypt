@@ -8,12 +8,14 @@ import (
 	"unsafe"
 )
 
-func Encrypt(password string) (hash string) {
-	arr := make([]C.char, 1024)
+func Encrypt(password string) string {
 	cpassword := C.CString(password)
 	defer C.free(unsafe.Pointer(cpassword))
-	C.encrypt((&arr[0]), cpassword)
-	return C.GoString((&arr[0]))
+	arr := string(make([]byte, 1024))
+	carr := C.CString(arr)
+//	defer C.free(unsafe.Pointer(carr))
+	C.encrypt(carr, cpassword)
+	return C.GoString(carr)
 }
 
 func Verify(password string, hash string) bool {
